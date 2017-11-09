@@ -11,9 +11,11 @@
                  [hiccup "1.0.5"]
                  [org.clojure/java.jdbc "0.7.3"]
                  [org.postgresql/postgresql "42.1.4"]
-                 [korma "0.4.3"]]
+                 [korma "0.4.3"]
+                 [camel-snake-kebab "0.4.0"]]
   :main ^:skip-aot intro.core
   :target-path "target/%s"
+  :repl-options {:init-ns intro}
   :profiles {:uberjar {:aot :all}
              :dev {:dependencies [[ring/ring-spec "0.0.3"]
                                   [ring/ring-mock "0.3.1"]

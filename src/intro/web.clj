@@ -9,8 +9,6 @@
   {:status 200
    :body "안녕하세요, 클로저 웹앱입니다."})
 
-
-
 (def 앱
   (wrap-defaults #'핸들러 site-defaults))
 
