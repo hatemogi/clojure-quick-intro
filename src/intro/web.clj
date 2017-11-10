@@ -21,13 +21,12 @@
 ;; $ http -v --form POST :3000/echo-name name=김대현
 
 (def 앱
-  (wrap-defaults #'라우터
-     (dissoc site-defaults :security)))
+  (wrap-defaults 라우터
+    (dissoc site-defaults :security)))
 
 (defn 웹서버실행
   [포트]
-  (run-jetty #'앱
-             {:port 포트 :join? false}))
+  (run-jetty #'앱 {:port 포트 :join? false}))
 
 (def 서버 (웹서버실행 3000))
 
