@@ -3,7 +3,8 @@
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.mock.request :as mock]
             [compojure.core :refer :all]
-            [compojure.route :as route]))
+            [compojure.route :as route]
+            [hiccup.core :refer [html]]))
 
 (def 가짜요청 (mock/request :get "/"))
 
@@ -15,13 +16,18 @@
   (GET "/" [] 핸들러)
   (POST "/echo-name" [name]
     (str "안녕하세요, " name "님!"))
+  (GET "/index.html" _
+    (html [:main
+           [:section
+            [:h1 "안녕하세요"]
+            [:div "클로저 웹서비스 데모"]]]))
   (route/not-found "찾을 수 없습니다"))
 
 ;; $ http :3000/
 ;; $ http -v --form POST :3000/echo-name name=김대현
-
+;; $ open 0.0.0.0:3000/index.html
 (def 앱
-  (wrap-defaults 라우터
+  (wrap-defaults #'라우터
     (dissoc site-defaults :security)))
 
 (defn 웹서버실행
