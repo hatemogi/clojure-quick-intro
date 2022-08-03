@@ -151,7 +151,7 @@ nil
 #(+ %1 %2)
 
 (def 덧셈 (fn [x y]
-            (+ x y)))
+          (+ x y)))
 
 (defn 덧셈' [x y] (+ x y))
 
@@ -213,10 +213,10 @@ nil
 
 ;; 퓨처 - future, realized?, deref, @
 (def 퓨처 (future
-            (println "퓨처 시작")
-            (Thread/sleep 10000)
-            (println "퓨처 끝!")
-            ::완료))
+          (println "퓨처 시작")
+          (Thread/sleep 10000)
+          (println "퓨처 끝!")
+          ::완료))
 
 (println "다른일 처리. realized? =>" (realized? 퓨처))
 (println "처리결과 =>" (deref 퓨처))
@@ -230,8 +230,8 @@ nil
 (UUID/randomUUID)
 
 (let [인사 (new StringBuilder "안녕하세요\n")]
-  (.append 인사 "제 6회\n")
-  (.append 인사 "리스프 세미나\n")
+  (.append 인사 "제 2회\n")
+  (.append 인사 "제주 개발자 모임\n")
   (.append 인사 "클로저 소개\n")
   (println (.toString 인사))
   인사)
@@ -243,12 +243,12 @@ nil
   (list 'if 조건식 참일때 거짓일때))
 
 (만약 (< 2 3)
-  "2는 3미만"
-  "2는 3이상")
+    "2는 3미만"
+    "2는 3이상")
 
 (macroexpand-1 '(만약 (< 2 3)
-                  "2는 3미만"
-                  "2는 3이상"))
+                    "2는 3미만"
+                    "2는 3이상"))
 
 
 
@@ -305,10 +305,10 @@ nil
       거래수 (atom 0)
       잠깐   #(Thread/sleep 1)
       송금 (fn [출금좌 입금좌]
-            (dosync (let [금액 (min @출금좌 (rand-int 1000))]
-                      (alter 출금좌 - 금액)
-                      (alter 입금좌 + 금액)))
-            (swap! 거래수 inc))
+           (dosync (let [금액 (min @출금좌 (rand-int 1000))]
+                     (alter 출금좌 - 금액)
+                     (alter 입금좌 + 금액)))
+           (swap! 거래수 inc))
       막송금 (fn [출 입] (dotimes [_ 1000] (잠깐) (송금 출 입)))]
   (future (막송금 계좌A 계좌B))
   (future (막송금 계좌B 계좌C))

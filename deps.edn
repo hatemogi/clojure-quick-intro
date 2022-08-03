@@ -1,0 +1,11 @@
+{:deps
+ {ring/ring {:mvn/version "1.9.5"}
+  ring/ring-defaults {:mvn/version "0.3.3"}
+  ring-mock/ring-mock {:mvn/version "0.1.5"}
+  ring/ring-jetty-adapter {:mvn/version "1.9.5"}
+  compojure/compojure {:mvn/version "1.7.0"}
+  hiccup/hiccup {:mvn/version "1.0.5"}
+  org.clojure/java.jdbc {:mvn/version "0.7.12"}
+  org.postgresql/postgresql {:mvn/version "42.4.0"}
+  korma/korma {:mvn/version "0.4.3"}
+  camel-snake-kebab/camel-snake-kebab {:mvn/version "0.4.3"}}}
